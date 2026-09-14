@@ -7,29 +7,207 @@
     <title>RetroGaming</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
+        :root {
+            --dark: #2A1B3D;
+            --purple: #44318D;
+            --pink: #D83F87;
+            --coral: #E98074;
+            --sage: #A4B3B6;
+        }
+
         body {
-            background-color: #f8f9fa;
+            background-color: var(--dark);
+            color: var(--sage);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background-color: rgba(42, 27, 61, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(216, 63, 135, 0.3);
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+
+        .navbar-custom .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            color: #fff !important;
+        }
+
+        .navbar-custom .nav-link {
+            color: var(--sage) !important;
+            font-weight: 500;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--pink) !important;
+        }
+
+        .navbar-custom .dropdown-menu {
+            background-color: var(--purple);
+            border: none;
+        }
+
+        .navbar-custom .dropdown-item {
+            color: var(--sage);
+        }
+
+        .navbar-custom .dropdown-item:hover {
+            background-color: var(--dark);
+            color: var(--pink);
+        }
+
+        /* ENCABEZADO */
+        header h1 {
+            font-weight: 700;
+            font-size: 2.75rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        header h1 span {
+            color: var(--pink);
+        }
+
+        header .lead {
+            color: var(--sage);
+            font-size: 1.1rem;
+        }
+
+        /* CAROUSEL */
+        .carousel {
+            border-radius: 14px;
+            overflow: hidden;
         }
 
         .carousel img {
-            height: 450px;
-            object-fit: contain;
-            background-color: white;
-        }
-
-        .card-img-top {
-            height: 250px;
+            height: 480px;
             object-fit: cover;
         }
 
+        .carousel-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(42, 27, 61, 0) 40%, rgba(42, 27, 61, 0.9) 100%);
+        }
+
+        .carousel-caption {
+            text-align: left;
+            left: 5%;
+            right: auto;
+            bottom: 8%;
+            max-width: 480px;
+        }
+
+        .carousel-caption h5 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-caption p {
+            color: var(--sage);
+            font-size: 0.95rem;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: var(--pink);
+        }
+
+        /* SECCIÓN PRODUCTOS */
+        h2 {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 48px;
+            height: 3px;
+            background-color: var(--pink);
+            margin: 10px auto 0;
+        }
+
         .card {
-            transition: 0.3s;
+            background-color: var(--purple);
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .card:hover {
-            transform: scale(1.03);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .card-text {
+            color: var(--sage);
+            font-size: 0.9rem;
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper .card-img-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .img-original {
+            opacity: 1;
+        }
+
+        .img-hover {
+            opacity: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark) !important;
+            border-top: 1px solid rgba(216, 63, 135, 0.3);
+            color: var(--sage) !important;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
@@ -37,50 +215,45 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="#"> RetroGaming</a>
+            <a class="navbar-brand" href="#">RetroGaming</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <ul class="navbar-nav me-auto">
-
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Menú
                         </a>
-
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Productos</a></li>
+                            <li><a class="dropdown-item" href="#productos">Productos</a></li>
                             <li><a class="dropdown-item" href="#">Carrito</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Contacto</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#contacto">Contacto</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="#">Acerca de Nosotros</a>
                     </li>
-
                 </ul>
-
             </div>
         </div>
     </nav>
 
     <!-- ENCABEZADO -->
     <header class="container text-center my-5">
-        <h1>Bienvenido a RetroGaming</h1>
+        <h1>Bienvenido a <span>RetroGaming</span></h1>
         <p class="lead">
             Explora nuestra colección de consolas y videojuegos.
         </p>
@@ -89,66 +262,67 @@
     <!-- CAROUSEL -->
     <section class="container mb-5">
 
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel"
-            data-bs-interval="3000">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
 
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-
-                <button type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="1" aria-label="Slide 2"></button>
-
-                <button type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
             </div>
 
             <div class="carousel-inner">
 
-                <div class="carousel-item active">
-                    <img src="https://static.vecteezy.com/system/resources/previews/013/007/607/non_2x/set-of-console-game-device-handheld-portable-free-png.png"
-                        class="d-block w-100" alt="Nintendo Switch">
-
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Nintendo Switch</h5>
-                        <p>Juega donde quieras con la consola híbrida de Nintendo.</p>
+                <div class="carousel-item active position-relative">
+                    <img src="https://gameinformer.com/sites/default/files/styles/content_header_l/public/2025/03/26/a7832ec8/mh_wilds-mizutsune_01.jpg.webp"
+                        class="d-block w-100" alt="Monster Hunter Wilds">
+                    <div class="carousel-caption">
+                        <h5>Monster Hunter Wilds</h5>
+                        <p>Sumérgete en un mundo de caza épica con monstruos gigantes.</p>
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <img src="https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$"
-                        class="d-block w-100" alt="PlayStation 5">
-
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>PlayStation 5</h5>
-                        <p>Potencia de nueva generación para una experiencia única.</p>
+                <div class="carousel-item position-relative">
+                    <img src="https://i.redd.it/botw-link-to-a-gallery-of-300-high-quality-screenshots-v0-syzga7t5a1za1.jpg?width=3840&format=pjpg&auto=webp&s=078fb85d6b3bda10563dcbafe35e31a6e02ffab7"
+                        class="d-block w-100" alt="Zelda: Breath of the Wild">
+                    <div class="carousel-caption">
+                        <h5>Zelda: Breath of the Wild</h5>
+                        <p>Explora el vasto reino de Hyrule en una de las mayores aventuras de Link.</p>
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <img src="https://www.nintendo.com/eu/media/images/hardware_2/nintendo_switch_18/nintendo_switch_2___features/welcome_hero_sp.png"
-                        class="d-block w-100" alt="Nintendo Switch 2">
+                <div class="carousel-item position-relative">
+                    <img src="https://images8.alphacoders.com/527/thumb-1920-527260.png" class="d-block w-100"
+                        alt="The Last of Us">
+                    <div class="carousel-caption">
+                        <h5>The Last of Us</h5>
+                        <p>Una épica y emotiva historia de supervivencia en un mundo post-apocalíptico.</p>
+                    </div>
+                </div>
 
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Nintendo Switch 2</h5>
-                        <p>La evolución de la experiencia portátil de Nintendo.</p>
+                <div class="carousel-item active position-relative">
+                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1836450/ss_82d8b0caf8f556e14c644fbe016447c9d45bd0fa.jpg"
+                        class="d-block w-100" alt="Monster Hunter Rise">
+                    <div class="carousel-caption">
+                        <h5>Monster Hunter Rise: Sunbreak</h5>
+                        <p>Sumérgete en un mundo de caza épica con monstruos gigantes.</p>
                     </div>
                 </div>
 
             </div>
 
-            <button class="carousel-control-prev" type="button"
-                data-bs-target="#carouselExampleCaptions"
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                 data-bs-slide="prev">
-
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
 
-            <button class="carousel-control-next" type="button"
-                data-bs-target="#carouselExampleCaptions"
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
                 data-bs-slide="next">
-
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button>
@@ -158,17 +332,20 @@
     </section>
 
     <!-- PRODUCTOS -->
-    <section class="container mb-5">
+    <section id="productos" class="container mb-5">
 
-        <h2 class="text-center mb-4">Videojuegos Destacados</h2>
+        <h2 class="text-center mb-5">Videojuegos Destacados</h2>
 
         <div class="row g-4">
 
             <div class="col-12 col-md-6 col-lg-3">
-                <div class="card h-100 shadow">
-                    <img src="https://i5.walmartimages.com/asr/88fdeff7-b5c7-4dc1-9d30-66217f20f86c.3d08635afa4636f1074ae99ebf602b92.jpeg"
-                        class="card-img-top" alt="Zelda">
-
+                <div class="card h-100">
+                    <div class="card-img-wrapper">
+                        <img src="https://i5.walmartimages.com/asr/88fdeff7-b5c7-4dc1-9d30-66217f20f86c.3d08635afa4636f1074ae99ebf602b92.jpeg"
+                            class="card-img-top img-original" alt="Zelda">
+                        <img src="https://nintendoeverything.com/wp-content/uploads/zelda-breath-wild-feb-22.jpg"
+                            class="card-img-top img-hover" alt="Zelda screenshot">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Zelda: Breath of the Wild</h5>
                         <p class="card-text">
@@ -179,10 +356,13 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-3">
-                <div class="card h-100 shadow">
-                    <img src="https://cdn.hmv.com/r/w-640/hmv/files/8d/8dafa2ee-3179-4c85-b624-975164cc1185.png"
-                        class="card-img-top" alt="Monster Hunter Rise">
-
+                <div class="card h-100">
+                    <div class="card-img-wrapper">
+                        <img src="https://cdn.hmv.com/r/w-640/hmv/files/8d/8dafa2ee-3179-4c85-b624-975164cc1185.png"
+                            class="card-img-top img-original" alt="Monster Hunter Rise">
+                        <img src="https://preview.redd.it/monster-hunter-rise-magnamalo-screenshots-v0-5s1f121mjpa61.jpg?width=640&crop=smart&auto=webp&s=b27a20b71905cc13eea841a8686333ce64e7fb9f"
+                            class="card-img-top img-hover" alt="Monster Hunter Rise screenshot">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Monster Hunter Rise</h5>
                         <p class="card-text">
@@ -193,10 +373,13 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-3">
-                <div class="card h-100 shadow">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTawGMIFll6yyMTwBFLKv-vVG7Xw9qUt-iclc5JyKb7TLNyNu5Iq-Gh6SxU&s=10"
-                        class="card-img-top" alt="Monster Hunter Wilds">
-
+                <div class="card h-100">
+                    <div class="card-img-wrapper">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTawGMIFll6yyMTwBFLKv-vVG7Xw9qUt-iclc5JyKb7TLNyNu5Iq-Gh6SxU&s=10"
+                            class="card-img-top img-original" alt="Monster Hunter Wilds">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtC3LGYvbctAnJ2ip0ErgtNd2CAfjrn9fasx3idvLzA9lAq9zlqWfIJ9fJ&s=10"
+                            class="card-img-top img-hover" alt="Monster Hunter Wilds screenshot">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Monster Hunter Wilds</h5>
                         <p class="card-text">
@@ -207,10 +390,13 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-3">
-                <div class="card h-100 shadow">
-                    <img src="https://juegosdigitaleschile.com/files/images/productos/1764375480-the-last-of-us-remastered-ps5-0.webp"
-                        class="card-img-top" alt="The Last Of Us">
-
+                <div class="card h-100">
+                    <div class="card-img-wrapper">
+                        <img src="https://juegosdigitaleschile.com/files/images/productos/1764375480-the-last-of-us-remastered-ps5-0.webp"
+                            class="card-img-top img-original" alt="The Last Of Us">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9amMmdwmmpZGJj79v59MeLA1JZecNdtWOg2E2dUzolNjAlOdH__g3rcDQ&s=10"
+                            class="card-img-top img-hover" alt="The Last Of Us screenshot">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">The Last of Us Remastered</h5>
                         <p class="card-text">
@@ -222,17 +408,44 @@
 
         </div>
 
+        <div id="juegos-container" class="row g-4 mt-4"></div>
+
+    </section>
+
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="container mb-5">
+        <h2 class="text-center mb-4">Contáctanos</h2>
+
+        <form id="formularioContacto" class="mx-auto" style="max-width: 500px;">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-light w-100">Enviar</button>
+        </form>
+
+        <div id="confirmacionMensaje" class="text-center mt-3 d-none"></div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white text-center p-3">
+    <footer class="text-center p-3">
         <p class="mb-0">
             © 2026 RetroGaming | Desarrollo Frontend I
         </p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
